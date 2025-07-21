@@ -28,7 +28,7 @@
       color: #333;
     }
 
-    .subscribe-btn {
+    .btn {
       background-color: #cc0000;
       color: white;
       padding: 12px 24px;
@@ -41,8 +41,15 @@
       text-decoration: none;
     }
 
-    .subscribe-btn:hover {
+    .btn:hover {
       background-color: #b30000;
+    }
+
+    #confirmation {
+      margin-top: 20px;
+      display: none;
+      color: green;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -50,20 +57,30 @@
 
   <div class="container">
     <h1>Subscribe to Our YouTube Channel</h1>
-    <p>Click below to subscribe and stay updated!</p>
-
-    <!-- YouTube Subscribe Link Button -->
+    <p>Step 1: Click below to subscribe (opens in new tab)</p>
+    
+    <!-- Subscribe Button -->
     <a href="https://www.youtube.com/channel/UCbG0Id7hw5yANDvoR-MpQEw?sub_confirmation=1"
        target="_blank"
-       class="subscribe-btn"
-       onclick="redirectToHome()">
-      Click to Subscribe
+       class="btn">
+      Subscribe
     </a>
+
+    <p>Step 2: After subscribing, click the button below</p>
+    
+    <!-- I Subscribed Button -->
+    <button class="btn" onclick="confirmAndRedirect()">I Subscribed</button>
+
+    <!-- Confirmation Message -->
+    <div id="confirmation">Thank you! Redirecting...</div>
   </div>
 
   <script>
-    function redirectToHome() {
-      // Redirect to home.html after 3 seconds
+    function confirmAndRedirect() {
+      const msg = document.getElementById('confirmation');
+      msg.style.display = 'block';
+
+      // Redirect after 3 seconds
       setTimeout(() => {
         window.location.href = 'home.html';
       }, 3000);
