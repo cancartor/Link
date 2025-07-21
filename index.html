@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Subscribe to My Channel</title>
-  <script src="https://apis.google.com/js/platform.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -24,7 +23,12 @@
       color: #cc0000;
     }
 
-    #continueBtn {
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .subscribe-btn {
       background-color: #cc0000;
       color: white;
       padding: 12px 24px;
@@ -34,9 +38,10 @@
       cursor: pointer;
       margin-top: 20px;
       transition: background-color 0.3s ease;
+      text-decoration: none;
     }
 
-    #continueBtn:hover {
+    .subscribe-btn:hover {
       background-color: #b30000;
     }
   </style>
@@ -47,17 +52,23 @@
     <h1>Subscribe to Our YouTube Channel</h1>
     <p>Click below to subscribe and stay updated!</p>
 
-    <!-- YouTube Subscribe Button -->
-    <div class="g-ytsubscribe"
-         data-channelid="UCbG0Id7hw5yANDvoR-MpQEw"
-         data-layout="default"
-         data-count="default">
-    </div>
-
-    <!-- Continue Button -->
-    <br>
-    <button id="continueBtn" onclick="window.location.href='home.html'">Continue to Home</button>
+    <!-- YouTube Subscribe Link Button -->
+    <a href="https://www.youtube.com/channel/UCbG0Id7hw5yANDvoR-MpQEw?sub_confirmation=1"
+       target="_blank"
+       class="subscribe-btn"
+       onclick="redirectToHome()">
+      Click to Subscribe
+    </a>
   </div>
+
+  <script>
+    function redirectToHome() {
+      // Redirect to home.html after 3 seconds
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 3000);
+    }
+  </script>
 
 </body>
 </html>
