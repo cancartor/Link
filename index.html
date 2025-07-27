@@ -1,91 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Subscribe to My Channel</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>gaurnit-study | E-Library</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      text-align: center;
-      padding-top: 100px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .title {
+      font-size: 20px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #444;
+      color: white;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #555;
+    }
+
+    .sidebar a:hover {
+      background-color: #666;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 5px solid #4CAF50;
+    }
+
+    header h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+      line-height: 1.4;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    nav ul li {
       display: inline-block;
     }
 
-    h1 {
-      color: #cc0000;
+    nav ul li a {
+      color: #f4f4f4;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
     }
 
-    p {
+    nav ul li a:hover {
+      background: #4CAF50;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    form {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 60%;
+      margin: 20px auto;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    form label {
+      font-size: 16px;
+      margin-right: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    form select,
+    form button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    form select {
+      width: 50%;
+    }
+
+    form button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #45a049;
+    }
+
+    #link-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .link-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .link-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .link-item img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .link-item h3 {
+      margin: 10px 0;
       font-size: 18px;
       color: #333;
     }
 
-    .btn {
-      background-color: #cc0000;
+    .link-item a {
+      background: #4CAF50;
       color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 24px;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
+      padding: 10px 15px;
       text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      transition: background 0.3s ease;
     }
 
-    .btn:hover {
-      background-color: #b30000;
+    .link-item a:hover {
+      background: #45a049;
     }
 
-    #confirmation {
-      margin-top: 20px;
-      display: none;
-      color: green;
-      font-weight: bold;
+    footer {
+      background: #333;
+      color: #f4f4f4;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        width: 90%;
+      }
+
+      #link-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Subscribe to Our YouTube Channel</h1>
-    <p>Step 1: Click below to subscribe (opens in new tab)</p>
-    
-    <!-- Subscribe Button -->
-    <a href="https://www.youtube.com/channel/UCbG0Id7hw5yANDvoR-MpQEw?sub_confirmation=1"
-       target="_blank"
-       class="btn">
-      Subscribe
-    </a>
-
-    <p>Step 2: After subscribing, click the button below</p>
-    
-    <!-- I Subscribed Button -->
-    <button class="btn" onclick="confirmAndRedirect()">I Subscribed</button>
-
-    <!-- Confirmation Message -->
-    <div id="confirmation">Thank you! Redirecting...</div>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <span class="menu-icon" onclick="toggleSidebar()">&#9776;</span>
+    <div class="title">Swipe or Click Sidebar</div>
   </div>
 
-  <script>
-    function confirmAndRedirect() {
-      const msg = document.getElementById('confirmation');
-      msg.style.display = 'block';
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="linkindex.php">Home</a>
+    <a href="lms/index.php">Book Store</a>
+    <a href="video/videoindex.php">Video Section</a>
+    <a href="linklogin.html">Admin Login</a> 
+    <a href="logout.php">Logout</a>
+  </div>
 
-      // Redirect after 3 seconds
-      setTimeout(() => {
-        window.location.href = 'home.html';
-      }, 3000);
+  <!-- Main Header -->
+  <header>
+    <div class="container">
+      <h1>gaurnit-study<br>E-Library</h1>
+      <nav>
+        <ul>
+          <li><a href="linkindex.php">HOME</a></li>
+          <li><a href="lms/index.php">BOOK STORE</a></li>
+          <li><a href="video/videoindex.php">VIDEO SECTION</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Link Filter -->
+  <h2>Link Sharing Platform</h2>
+  <form method="GET" action="">
+    <label>Select Category:</label>
+    <select name="category">
+      <option value="">All</option>
+      <option value="news">News</option>
+      <option value="education">Education</option>
+      <option value="entertainment">Entertainment</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+
+  <!-- Links Grid -->
+  <div id="link-container">
+    <div class="link-item">
+      <img src="https://via.placeholder.com/320x180" alt="Sample 1">
+      <h3>Sample Link 1</h3>
+      <a href="#">Visit</a>
+    </div>
+    <div class="link-item">
+      <img src="https://via.placeholder.com/320x180" alt="Sample 2">
+      <h3>Sample Link 2</h3>
+      <a href="#">Visit</a>
+    </div>
+    <div class="link-item">
+      <img src="https://via.placeholder.com/320x180" alt="Sample 3">
+      <h3>Sample Link 3</h3>
+      <a href="#">Visit</a>
+    </div>
+    <div class="link-item">
+      <img src="https://via.placeholder.com/320x180" alt="Sample 4">
+      <h3>Sample Link 4</h3>
+      <a href="#">Visit</a>
+    </div>
+    <div class="link-item">
+      <img src="https://via.placeholder.com/320x180" alt="Sample 5">
+      <h3>Sample Link 5</h3>
+      <a href="#">Visit</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 gaurnit-study. All rights reserved.</p>
+  </footer>
+
+  <!-- Sidebar Toggle & Swipe -->
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    let startX = 0;
+    let endX = 0;
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("open");
     }
+
+    document.addEventListener("touchstart", function(e) {
+      startX = e.touches[0].clientX;
+    });
+
+    document.addEventListener("touchmove", function(e) {
+      endX = e.touches[0].clientX;
+    });
+
+    document.addEventListener("touchend", function() {
+      const diff = endX - startX;
+      if (diff > 70) {
+        sidebar.classList.add("open"); // Swipe Right
+      } else if (diff < -70) {
+        sidebar.classList.remove("open"); // Swipe Left
+      }
+    });
   </script>
 
 </body>
 </html>
+
