@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>gaurnit-study | E-Library</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -12,27 +16,29 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f4f9;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f4f4f9, #e0f7fa);
       overflow-x: hidden;
     }
 
     .topbar {
-      background-color: #333;
+      background: linear-gradient(to right, white, #2e7d32);
       color: white;
       padding: 15px;
       display: flex;
       align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .menu-icon {
-      font-size: 24px;
+      font-size: 26px;
       cursor: pointer;
       margin-right: 20px;
     }
 
     .title {
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: 600;
     }
 
     .sidebar {
@@ -41,7 +47,7 @@
       left: -250px;
       width: 250px;
       height: 100%;
-      background-color: #444;
+      background-color: #2e2e2e;
       color: white;
       padding-top: 60px;
       transition: left 0.3s ease;
@@ -59,106 +65,90 @@
       color: white;
       text-decoration: none;
       border-bottom: 1px solid #555;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
     .sidebar a:hover {
-      background-color: #666;
+      background-color: #4CAF50;
+      padding-left: 35px;
     }
 
     header {
       background: #333;
       color: #fff;
-      padding: 20px 0;
+      padding: 25px 0 15px;
       text-align: center;
       border-bottom: 5px solid #4CAF50;
     }
 
-    header h1 {
-      font-size: 28px;
+  
+     #h111 {
+      font-size: 32px;
       letter-spacing: 1px;
-      line-height: 1.4;
+      margin-bottom: 10px;
+      color: white;
+    }
+    header h1 {
+      font-size: 32px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px 0;
     }
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0;
+  background-color: #333;
+}
 
-    nav ul li {
-      display: inline-block;
-    }
+.nav-bar a {
+  color: #f4f4f4;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-bar a:hover {
+  background: #4CAF50;
+}
 
     nav ul li a {
       color: #f4f4f4;
       text-decoration: none;
-      padding: 8px 15px;
+      padding: 8px 16px;
       border-radius: 5px;
       transition: background 0.3s ease;
+      font-weight: 500;
     }
 
     nav ul li a:hover {
       background: #4CAF50;
     }
 
-    h2 {
+    h1 {
       text-align: center;
-      margin-top: 20px;
+      margin: 30px 0 20px;
       color: #333;
       font-size: 28px;
     }
 
-    form {
-      background: #fff;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 60%;
-      margin: 20px auto;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    form label {
-      font-size: 16px;
-      margin-right: 10px;
-      font-weight: bold;
-      color: #555;
-    }
-
-    form select,
-    form button {
-      padding: 10px 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-
-    form select {
-      width: 50%;
-    }
-
-    form button {
-      background: #4CAF50;
-      color: white;
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s ease;
-    }
-
-    form button:hover {
-      background: #45a049;
-    }
-
-    #link-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
+    .fom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0;
     }
 
     .link-item {
@@ -168,6 +158,7 @@
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 320px;
     }
 
     .link-item:hover {
@@ -177,15 +168,13 @@
 
     .link-item img {
       width: 100%;
-      max-width: 320px;
-      height: auto;
       border-radius: 8px;
       margin-bottom: 15px;
     }
 
     .link-item h3 {
       margin: 10px 0;
-      font-size: 18px;
+      font-size: 20px;
       color: #333;
     }
 
@@ -195,35 +184,105 @@
       padding: 10px 15px;
       text-decoration: none;
       border-radius: 5px;
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 14px;
+      font-weight: 600;
       transition: background 0.3s ease;
     }
 
     .link-item a:hover {
-      background: #45a049;
+      background: #388e3c;
+    }
+
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .book-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .button-group {
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .read-btn {
+      background-color: #4CAF50;
+    }
+
+    .download-btn {
+      background-color: #2196F3;
+    }
+
+    .read-btn:hover {
+      background-color: #388e3c;
+    }
+
+    .download-btn:hover {
+      background-color: #1976D2;
     }
 
     footer {
-      background: #333;
+      background: #2e2e2e;
       color: #f4f4f4;
       text-align: center;
-      padding: 10px 0;
-      margin-top: 30px;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 15px;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     @media (max-width: 768px) {
-      form {
+      .book-card {
         width: 90%;
       }
 
-      #link-container {
-        grid-template-columns: 1fr;
+      .link-item {
+        width: 90%;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top Bar -->
@@ -237,64 +296,39 @@
     <a href="linkindex.php">Home</a>
     <a href="lms/index.php">Book Store</a>
     <a href="video/videoindex.php">Video Section</a>
-    <a href="linklogin.html">Admin Login</a> 
+    <a href="linklogin.html">Admin Login</a>
     <a href="logout.php">Logout</a>
   </div>
 
   <!-- Main Header -->
   <header>
-    <div class="container">
-      <h1>gaurnit-study<br>E-Library</h1>
-      <nav>
-        <ul>
-          <li><a href="linkindex.php">HOME</a></li>
-          <li><a href="lms/index.php">BOOK STORE</a></li>
-          <li><a href="video/videoindex.php">VIDEO SECTION</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1 class="h11"id="h111">gaurnit-study<br>E-Library</h1>
+    
+    <nav class="nav-bar">
+  <a href="linkindex.php">HOME</a>
+  <a href="lms/index.php">BOOK</a>
+  <a href="video/videoindex.php">VIDEO</a>
+</nav>
+
+      
+    
   </header>
 
-  <!-- Link Filter -->
-  <h2>Link Sharing Platform</h2>
-  <form method="GET" action="">
-    <label>Select Category:</label>
-    <select name="category">
-      <option value="">All</option>
-      <option value="news">News</option>
-      <option value="education">Education</option>
-      <option value="entertainment">Entertainment</option>
-    </select>
-    <button type="submit">Filter</button>
-  </form>
+  <!-- YouTube Section -->
+  
+  <div class="fom" id="form">
+    <div class="link-item">
+      <marquee behavior="scroll" direction="left">SUBSCRIBE MY CHANNEL FOR MORE UPDATE</marquee>
 
-  <!-- Links Grid -->
-  <div id="link-container">
-    <div class="link-item">
-      <img src="9.png/320x180" alt="Sample 1">
-      <h3>Sample Link 1</h3>
+      <h3>YOUTUBE</h3>
       <a href="#">Visit</a>
     </div>
-    <div class="link-item">
-      <img src="https://via.placeholder.com/320x180" alt="Sample 2">
-      <h3>Sample Link 2</h3>
-      <a href="#">Visit</a>
-    </div>
-    <div class="link-item">
-      <img src="https://via.placeholder.com/320x180" alt="Sample 3">
-      <h3>Sample Link 3</h3>
-      <a href="#">Visit</a>
-    </div>
-    <div class="link-item">
-      <img src="https://via.placeholder.com/320x180" alt="Sample 4">
-      <h3>Sample Link 4</h3>
-      <a href="#">Visit</a>
-    </div>
-    <div class="link-item">
-      <img src="https://via.placeholder.com/320x180" alt="Sample 5">
-      <h3>Sample Link 5</h3>
-      <a href="#">Visit</a>
-    </div>
+  </div>
+
+  <!-- Books Section -->
+  <h1>📚 Books - Read & Download</h1>
+  <div class="book-container" id="bookList">
+    <!-- Books injected here -->
   </div>
 
   <!-- Footer -->
@@ -302,8 +336,27 @@
     <p>&copy; 2025 gaurnit-study. All rights reserved.</p>
   </footer>
 
-  <!-- Sidebar Toggle & Swipe -->
+  <!-- Script -->
   <script>
+    const books = [
+      { title: "HTML Basics", readLink: "#", downloadLink: "#" },
+      { title: "Learn CSS", readLink: "#", downloadLink: "#" },
+      { title: "JavaScript Guide", readLink: "#", downloadLink: "#" },
+    ];
+
+    const bookList = document.getElementById("bookList");
+    books.forEach(book => {
+      const div = document.createElement("div");
+      div.className = "book-card";
+      div.innerHTML = `
+        <div class="book-title">${book.title}</div>
+        <div class="button-group">
+          <a class="btn read-btn" href="${book.readLink}" target="_blank">Read</a>
+          <a class="btn download-btn" href="${book.downloadLink}" download>Download</a>
+        </div>`;
+      bookList.appendChild(div);
+    });
+
     const sidebar = document.getElementById("sidebar");
     let startX = 0;
     let endX = 0;
@@ -312,24 +365,13 @@
       sidebar.classList.toggle("open");
     }
 
-    document.addEventListener("touchstart", function(e) {
-      startX = e.touches[0].clientX;
-    });
-
-    document.addEventListener("touchmove", function(e) {
-      endX = e.touches[0].clientX;
-    });
-
-    document.addEventListener("touchend", function() {
+    document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+    document.addEventListener("touchmove", e => endX = e.touches[0].clientX);
+    document.addEventListener("touchend", () => {
       const diff = endX - startX;
-      if (diff > 70) {
-        sidebar.classList.add("open"); // Swipe Right
-      } else if (diff < -70) {
-        sidebar.classList.remove("open"); // Swipe Left
-      }
+      if (diff > 70) sidebar.classList.add("open");
+      else if (diff < -70) sidebar.classList.remove("open");
     });
   </script>
-
 </body>
 </html>
-
