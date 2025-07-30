@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      margin: 2px;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .read-btn {
+      background-color: #4CAF50;
+    }
+
+    .download-btn {
+      background-color: #2196F3;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📚 Book List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Book Title</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="bookTable">
+      <!-- Rows will be added by JavaScript -->
+    </tbody>
+  </table>
+
+  <script>
+    const books = [
+      {
+        title: "Introduction to HTML",
+        readLink: "https://example.com/files/html-book.pdf",
+        downloadLink: "https://example.com/files/html-book.pdf"
+      },
+      {
+        title: "CSS for Beginners",
+        readLink: "https://example.com/files/css-book.pdf",
+        downloadLink: "https://example.com/files/css-book.pdf"
+      },
+      {
+        title: "JavaScript Essentials",
+        readLink: "https://example.com/files/js-book.pdf",
+        downloadLink: "https://example.com/files/js-book.pdf"
+      }
+    ];
+
+    const bookTable = document.getElementById("bookTable");
+
+    books.forEach(book => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${book.title}</td>
+        <td>
+          <a class="btn read-btn" href="${book.readLink}" target="_blank">Read</a>
+          <a class="btn download-btn" href="${book.downloadLink}" download>Download</a>
+        </td>
+      `;
+
+      bookTable.appendChild(row);
+    });
+  </script>
+
+</body>
+</html>
