@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 10px;
+    }
+
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .button-group {
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      margin-right: 8px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .read-btn {
+      background-color: #4caf50;
+    }
+
+    .download-btn {
+      background-color: #2196f3;
+    }
+
+    #readerContainer {
+      margin-top: 20px;
+      display: none;
+    }
+
+    iframe {
+      border: 1px solid #ccc;
+      width: 100%;
+      height: 600px;
+    }
+
+    @media (max-width: 500px) {
+      .book-card {
+        width: 100%;
+      }
+
+      iframe {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📚 Books - Read & Download</h2>
+
+  <div class="book-container" id="bookList">
+    <!-- JavaScript will inject book cards here -->
+  </div>
+
+  <div id="readerContainer">
+    <h3>📖 Reading Area</h3>
+    <iframe id="pdfReader"></iframe>
+  </div>
+<script>
+  const books = [
+    {
+      title: "SSC JE MECH",
+      readLink: "https://drive.google.com/file/d/16I__P6IWlCbbaVt2VConDxmCdCCBHUvE",
+      downloadLink: "https://drive.google.com/uc?export=download&id=16I__P6IWlCbbaVt2VConDxmCdCCBHUvE"
+    },
+    {
+      title: "Learn CSS",
+      readLink: "https://example.com/read/css.pdf",
+      downloadLink: "https://example.com/download/css.pdf"
+    },
+    {
+      title: "JavaScript Guide",
+      readLink: "https://example.com/read/js.pdf",
+      downloadLink: "https://example.com/download/js.pdf"
+    }
+  ];
+
+  const bookList = document.getElementById("bookList");
+
+  books.forEach(book => {
+    const div = document.createElement("div");
+    div.className = "book-card";
+    div.innerHTML = `
+      <div class="book-title">${book.title}</div>
+      <div class="button-group">
+        <button class="btn read-btn">Read</button>
+        <a class="btn download-btn" href="${book.downloadLink}" target="_blank" download>Download</a>
+      </div>
+    `;
+
+    const readButton = div.querySelector(".read-btn");
+    readButton.addEventListener("click", () => {
+      let readURL = book.readLink;
+      if (book.readLink.includes("drive.google.com/file/d/")) {
+        const fileId = book.readLink.split("/d/")[1].split("/")[0];
+        readURL = `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+      window.open(readURL, '_blank');
+    });
+
+    bookList.appendChild(div);
+  });
+</script>
+
+
+</body>
+</html>
