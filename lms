@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Website Status</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px black;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+button {
+    background: #00c853;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #009624;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚧 Website is Not Live</h1>
+
+    <p>We are working on this website.<br>
+       Please download all files below.</p>
+
+    <button onclick="downloadFiles()">
+        ⬇️ Download All Files
+    </button>
+
+</div>
+
+<script>
+function downloadFiles() {
+
+    // Google Drive folder link
+    var fileUrl = "https://drive.google.com/drive/folders/1LXJMYd5A5LQdw9xOQLCBgDJxpa_bp6ka";
+
+    // Redirect to link
+    window.location.href = fileUrl;
+
+}
+</script>
+
+</body>
+</html>
